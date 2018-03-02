@@ -9,19 +9,15 @@ var a1= {
     title: 'Article 1',
     heading: 'Article one',
     date: 'Mar 02, 2018' ,
-    
-    content: " <p> This is paragraph on </p>  <p>This is paragraph two</p>  <p>This is paragraph three: The official teaser of Rajinikanth starrer 'Kaala' has been released. The film also stars Nana Patekar, who will reportedly play the antagonist in the film, Huma Qureshi and Eswari Rao among others. Directed by Pa Ranjith and produced by Rajinikanth's son-in-law Dhanush, 'Kaala' is scheduled to release on April 27.</p> "
-}
+    content: ' <p> This is paragraph on </p>  <p>This is paragraph two</p>  <p>This is paragraph two </p> '
+};
 
 
-var htmlTemplate: '
-
-<html>
-    
+var htmlTemplate = '
+  <html>
     <head>
-        
         <title>
-        Article 1
+          ${title}
     </title>
      <meta name="viewport" content="width-device-width, initial-scale=0" />
      
@@ -39,28 +35,24 @@ var htmlTemplate: '
         <hr/>
         
         <h3>
-            Article One
+            ${heading}
         </h3>
         
         <hr/>
         
         <div>
-            2-03-2018
+            ${date}
         </div>
         
         <div>
-            $ content[]
+            $ {content}
         </div>
     </div>
         
     </body>
 
-</html>
-
-
-'
-
-
+  </html> 
+  ';
 
 
 app.get('/', function (req, res) {
