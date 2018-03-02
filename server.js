@@ -10,49 +10,53 @@ var articleOne= {
     title: 'Article 1',
     heading: 'Article one',
     date: 'Mar 02, 2018' ,
-    content: '<p> This is paragraph on </p>  <p>This is paragraph two</p>  <p>This is paragraph two </p>'
+    content: `<p> Responding to being slut-shamed for breastfeeding a baby on the cover of Malayalam magazine 'Grihalakshmi', Gilu Joseph said, "I haven't earned a single penny out of it...How is this a publicity [stunt] at all?" "People would...have no problem seeing graphic images of people getting killed...but cannot bear to see a woman bond with her child by feeding it," she added. </p>
+    
+    <p>Producer Harvey Weinstein's insurers have refused to pay in his defence of 11 lawsuits alleging sexual assault. Five insurance companies had asked a New York Supreme Court judge to absolve them of any obligation to assist the Hollywood producer.</p>
+    
+    <p>This is paragraph three </p>`
 };
 
 
 
-function createTemplate (data) {
+function createTemplate(data) {
     var title= data.title;
     var date= data.date;
     var heading= data.heading;
     var content= data.content;
-
-var htmlTemplate= {
-<html>
-
-   <head>
-        <title>
-          ${title}
-    </title>
-     <meta name="viewport" content="width-device-width, initial-scale=0" />
-     
-    <link href="/ui/style.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-        <div class= "container">
-            <div>
-            <a href="/" >Home</a>
-        </div>
-        <hr/>
-        <h3>
-            ${heading}
-        </h3>
-        <hr/>
-        <div>
-            ${date}
-        </div>
-        <div>
-            $ {content}
-        </div>
-    </div>
-    </body>
-</html> 
-}
+`
+        var htmlTemplate= `
+        <html>
+            <head>
+                    <title>
+                      ${title}
+                </title>
+                 <meta name="viewport" content="width-device-width, initial-scale=1" />
+                 
+                <link href="/ui/style.css" rel="stylesheet" />
+                </head>
+                
+                <body>
+                    <div class= "container">
+                        <div>
+                        <a href="/" >Home</a>
+                    </div>
+                    <hr/>
+                    <h3>
+                        ${heading}
+                    </h3>
+                    <hr/>
+                    <div>
+                        ${date}
+                    </div>
+                    <div>
+                        $ {content}
+                    </div>
+                </div>
+                </body>
+            </html> 
+        `;
+        }
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
