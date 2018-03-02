@@ -5,17 +5,29 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleOne= {
-    title: 'Article 1',
-    heading: 'Article one',
-    date: 'Mar 02, 2018' ,
-    content: `<p> Responding to being slut-shamed for breastfeeding a baby on the cover of Malayalam magazine 'Grihalakshmi', Gilu Joseph said, "I haven't earned a single penny out of it...How is this a publicity [stunt] at all?" "People would...have no problem seeing graphic images of people getting killed...but cannot bear to see a woman bond with her child by feeding it," she added. </p>
+var articles= {
     
-    <p>Producer Harvey Weinstein's insurers have refused to pay in his defence of 11 lawsuits alleging sexual assault. Five insurance companies had asked a New York Supreme Court judge to absolve them of any obligation to assist the Hollywood producer.</p>
+    'article-one': {
+        title: 'Article 1',
+        heading: 'Article one',
+        date: 'Mar 02, 2018' ,
+        content: `<p> Responding to being slut-shamed for breastfeeding a baby on the cover of Malayalam magazine 'Grihalakshmi', Gilu Joseph said, "I haven't earned a single penny out of it...How is this a publicity [stunt] at all?" "People would...have no problem seeing graphic images of people getting killed...but cannot bear to see a woman bond with her child by feeding it," she added. </p>
+        
+        <p>Producer Harvey Weinstein's insurers have refused to pay in his defence of 11 lawsuits alleging sexual assault. Five insurance companies had asked a New York Supreme Court judge to absolve them of any obligation to assist the Hollywood producer.</p>
+        
+        <p>This is paragraph three </p>`
+    },
+    'article-two': {
+         title: 'Article 2',
+        heading: 'Article two',
+        date: 'Mar 02, 2018' ,
+        content: `
+            <p>This is paragraph three: The official teaser of Rajinikanth starrer 'Kaala' has been released. The film also stars Nana Patekar, who will reportedly play the antagonist in the film, Huma Qureshi and Eswari Rao among others. Directed by Pa Ranjith and produced by Rajinikanth's son-in-law Dhanush, 'Kaala' is scheduled to release on April 27.</p>`
+        
+    }
     
-    <p>This is paragraph three </p>`
 };
+
 
 
 
@@ -63,17 +75,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one', function(req, res){
-    res.send(createTemplate(articleOne));
+app.get('/:articleName', function(req, res){
+    //articleName = article-one
+    var articleName = req.params.articleName;
+    res.send(createTemplate(articles[articleName]));
 })
 
-app.get('/article-two', function(req, res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-})
-
-app.get('/article-three', function(req, res){
-    res.send('Article 3 is requested and is sent to the browser');
-})
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
